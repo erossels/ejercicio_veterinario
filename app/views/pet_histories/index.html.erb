@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pet Histories</h1>
+<div class='container'>
 
-<table>
+<h1 class='mb-3'>Pet Histories</h1>
+
+<table class='table table-sm'>
   <thead>
     <tr>
+      <th>Pet</th>
       <th>Weight</th>
       <th>Height</th>
       <th>Description</th>
@@ -16,6 +19,7 @@
   <tbody>
     <% @pet_histories.each do |pet_history| %>
       <tr>
+        <td><%= pet_history.pet %>
         <td><%= pet_history.weight %></td>
         <td><%= pet_history.height %></td>
         <td><%= pet_history.description %></td>
@@ -31,3 +35,5 @@
 <br>
 
 <%= link_to 'New Pet History', new_pet_history_path %>
+
+</div>

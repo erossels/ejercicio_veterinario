@@ -22,4 +22,8 @@ class Pet < ApplicationRecord
     Pet.includes(:pet_histories).references(:pet_histores).where("pet_histories.pet_id = #{id}").maximum(:height)
   end
 
+  def to_s
+    name
+  end
+
 end

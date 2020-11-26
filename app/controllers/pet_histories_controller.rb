@@ -20,6 +20,7 @@ class PetHistoriesController < ApplicationController
 
   # GET /pet_histories/1/edit
   def edit
+    @pets = Pet.all
   end
 
   # POST /pet_histories
@@ -42,6 +43,7 @@ class PetHistoriesController < ApplicationController
   # PATCH/PUT /pet_histories/1
   # PATCH/PUT /pet_histories/1.json
   def update
+    @pets = Pet.all
     respond_to do |format|
       if @pet_history.update(pet_history_params)
         format.html { redirect_to @pet_history, notice: 'Pet history was successfully updated.' }
