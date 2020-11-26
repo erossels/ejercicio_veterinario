@@ -1,0 +1,24 @@
+class Pet < ApplicationRecord
+  has_many :pet_histories, dependent: :destroy
+
+  def history_count
+    Pet.includes(:pet_histories).references(:pet_histories).where("pet_histories.pet_id = #{id}").count
+  end
+
+  def avg_weight
+    Pet.includes(:pet_histories).references(:pet_histores).where("pet_histories.pet_id = #{id}").average(:weight)
+  end
+
+  def avg_height
+    Pet.includes(:pet_histories).references(:pet_histores).where("pet_histories.pet_id = #{id}").average(:height)
+  end
+
+  def max_weight
+    Pet.includes(:pet_histories).references(:pet_histores).where("pet_histories.pet_id = #{id}").maximum(:weight)
+  end
+
+  def max_height
+    Pet.includes(:pet_histories).references(:pet_histores).where("pet_histories.pet_id = #{id}").maximum(:height)
+  end
+
+end

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container'>
+
+  <h3 class='mb-4'>Pet's log</h3>
+
+  <div class='row'>
+    <p class='mx-3'>
+      <strong>Name:</strong>
+      <%= @pet.name %>
+    </p>
+
+    <p class='mx-3'>
+      <strong>Race:</strong>
+      <%= @pet.race %>
+    </p>
+
+    <p class='mx-3'>
+      <strong>Birthdate:</strong>
+      <%= @pet.birthdate %>
+    </p>
+  </div>
+
+  <h5 class='mb-4'>History of visits</h5>
+
+  <table class='table table-sm col-md-6'>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Weight</th>
+        <th>Height</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pet.pet_histories.each do |history| %>
+        <tr>
+          <td><%= history.created_at.to_date %></td>
+          <td><%= history.weight %></td>
+          <td><%= history.height %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h5 class='mb-4'>Overall specs</h5>
+
+  <table class='table table-sm col-md-6'>
+    <thead>
+      <tr>
+        <th>Average Weight</th>
+        <th>Average Height</th>
+        <th>Maximum Weight</th>
+        <th>Maximum Height</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @pet.avg_weight %></td>
+        <td><%= @pet.avg_height %></td>
+        <td><%= @pet.max_weight %></td>
+        <td><%= @pet.max_height %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to 'Edit', edit_pet_path(@pet) %> |
+  <%= link_to 'Back', pets_path %>
+
+</div>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container'>
+
+  <h1>Pets</h1>
+
+  <table class='table table-sm col-md-8'>
+    <thead>
+      <tr>
+        <th class='mx-auto'>Name</th>
+        <th class='mx-auto'>Race</th>
+        <th class='mx-auto'>Birthdate</th>
+        <th> Visit count</th>
+        <th class='mx-auto center'>Visit Log</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pets.each do |pet| %>
+        <tr>
+          <td><%= pet.name %></td>
+          <td><%= pet.race %></td>
+          <td><%= pet.birthdate %></td>
+          <td><%= pet.history_count %></td>
+          <td>
+              <ul>
+                  <% pet.pet_histories.each do |history| %>
+                      <li><%= "V#{history.id} : #{history.created_at.to_date}" %></li>
+                  <% end  %>
+              </ul> 
+          </td>
+          <td><%= link_to 'Show', pet %></td>
+          <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+          <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Pet', new_pet_path %>
+
+</div>
